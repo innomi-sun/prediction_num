@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">宝くじのaiちゃん</string>
+    <string name="title_activity_main">宝くじのaiちゃん</string>
+    <string name="package_name">com.inommi.pred_num</string>
+    <string name="custom_url_scheme">com.inommi.pred_num</string>
+</resources>

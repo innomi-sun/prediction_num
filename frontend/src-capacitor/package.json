@@ -1,0 +1,12 @@
+{
+  "name": "pred_num_frontend",
+  "version": "0.0.1",
+  "description": "pred_num_frontend",
+  "author": "innomi <crosstime.sun@gmail.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^2.5.0",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
+  }
+}

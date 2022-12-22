@@ -1,0 +1,10 @@
+{
+  "appId": "com.inommi.pred_num",
+  "appName": "aiちゃん",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.10.100:8080"
+  }
+}

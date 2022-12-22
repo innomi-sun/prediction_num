@@ -1,0 +1,56 @@
+# docker-compose up
+version: '3.7'
+services:
+  # Save dato to remote DB server.
+  db_pg_loto:
+    image: postgres:14.5
+    container_name: db_pg_loto
+    ports:
+      - "5410:5432"
+    volumes:
+      - "./data/postgresql:/var/lib/postgresql/data/pgdata"
+      - "./data/db_init:/docker-entrypoint-initdb.d"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: lottery
+      PGDATA: /var/lib/postgresql/data/pgdata
+      TZ: Asia/Tokyo
+      PGTZ: Asia/Tokyo
+    restart: "no"
+  api_loto:
+    build: backend
+    image: backend
+    container_name: api_loto
+    depends_on:
+      - db_pg_loto
+    expose:
+      - "8100"
+    volumes:
+      - "../prediction_num:/home/prediction_num"
+    # entrypoint: ["crontab", "/home/prediction_num/configs/lottery_data.crontab"]
+    # entrypoint: ["/bin/bash"]
+    # stdin_open: true # docker run -i
+    # tty: true        # docker run -t
+    # TODO execute init models command
+    # python manage.py makemigrations
+    # python manage.py migrate 
+    restart: "no"
+  nginx_loto:
+    build: nginx
+    image: nginx
+    container_name: nginx_loto  
+    ports:
+       - "80:80"
+       - "443:443"
+    expose:
+       - "80"
+    volumes:
+       - "../prediction_num/frontend_dist/h5:/home/prediction_num/frontend" # static file
+       - "../prediction_num/data/media:/home/prediction_num/data/media " # upload media file
+       - "../prediction_num/log/nginx:/home/prediction_num/log/nginx" # log file
+    links:
+       - api_loto
+    depends_on:
+       - api_loto
+    restart: "always"

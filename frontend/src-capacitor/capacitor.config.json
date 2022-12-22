@@ -1,0 +1,7 @@
+{
+  "appId": "com.inommi.pred_num",
+  "appName": "宝くじのaiちゃん",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
