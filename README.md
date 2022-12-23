@@ -3,7 +3,7 @@
 
 
 ### 技術スタック
-Python、Flask、pyTorch、PostgreSQL
+Python、Flask、pyTorch、PostgreSQL、Docker
 
 Javascript、HTML/CSS、Vue.js、Quasar
 
